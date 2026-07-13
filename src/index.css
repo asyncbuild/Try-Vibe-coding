@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-charcoal: #1C1C1E;
+  --color-warm-white: #F5F2ED;
+  --color-copper: #C1662B;
+  --color-copper-hover: #A0511D;
+  --color-cream: #E5DFD5;
+  --color-gold: #C9A24B;
+  
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Custom pattern and effect utilities */
+.bg-dot-grid {
+  background-image: radial-gradient(#C1662B1A 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.bg-diagonal-lines {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    #C1662B0D 10px,
+    #C1662B0D 11px
+  );
+}
+
+.duotone-copper {
+  position: relative;
+  background-color: #1a1512; /* Rich very dark copper/charcoal base */
+  overflow: hidden;
+}
+
+.duotone-copper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #C1662B;
+  mix-blend-mode: color;
+  pointer-events: none;
+  opacity: 0.75;
+  z-index: 2;
+}
+
+.duotone-copper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(28, 28, 30, 0.4), transparent);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.duotone-copper img {
+  filter: grayscale(100%) contrast(1.25) brightness(0.95);
+  mix-blend-mode: luminosity;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.duotone-copper:hover img {
+  transform: scale(1.05);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-warm-white);
+  color: var(--color-charcoal);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+/* Custom scrollbar to match our premium aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F2ED;
+}
+::-webkit-scrollbar-thumb {
+  background: #C1662B;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A0511D;
+}
